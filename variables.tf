@@ -10,7 +10,7 @@ variable "vpc_cidr_block" {
 
 variable "vpc_subnet_cidr_block" {
   type        = string
-  defaults    = "172.17.1.0/24"
+  default    = "172.17.1.0/24"
   description = "internal ip block the VPC subnet should use. Must be contained in `vpc_cidr_block`"
 }
 variable "vpc_subnet_az" {
