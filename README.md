@@ -39,7 +39,7 @@
 
   -->
 
-# terraform-gitlab-ci-settings
+# terraform-aws-gitlab-ci-settings
 
 
 This is a terraform module that creates a testing environment in AWS for use with gitlab CI. It does not provision any gitlab runners.
@@ -79,13 +79,13 @@ The intention is that the Gitlab CI pipelines of these projects can create EC2 i
 
 
 **IMPORTANT:** The `master` branch is used in `source` just as an example. In your code, do not pin to `master` because there may be breaking changes between releases.
-Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://gitlab.com/guardianproject-ops/terraform-gitlab-ci-settings/releases).
+Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings/releases).
 
 
 
 ```hcl
 module "gitlab_ci_settings" {
-  source          = "git::https://gitlab.com/guardianproject-ops/terraform-gitlab-ci-settings?ref=tags/0.1.0"
+  source          = "git::https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings?ref=tags/0.1.0"
 
   namespace       = var.namespace
   name            = "gitlab-ci"
@@ -120,16 +120,16 @@ module "gitlab_ci_settings" {
 | attributes | Additional attributes (e.g., `one', or `two') | `list` | `[]` | no |
 | delimiter | Delimiter to be used between `namespace`, `stage`, `name`, and `attributes` | `string` | `"-"` | no |
 | gitlab\_docker\_image\_project\_ids | a subset of gitlab\_project\_ids that are projects that produce docker images and should have a uniform pipeline configuration applied. | `list` | `[]` | no |
-| gitlab\_project\_ids | the list of gitlab project ids to configure | `list` | `[]` | no |
-| gitlab\_schedule\_daily\_rebuild\_cron | the cron expression for the daily rebuild pipeline schedule | `string` | `"42 7 * * *"` | no |
+| gitlab\_project\_ids | list of gitlab project ids to configure | `list` | `[]` | no |
+| gitlab\_schedule\_daily\_rebuild\_cron | cron expression for the daily rebuild pipeline schedule | `string` | `"42 7 * * *"` | no |
 | name | Name  (e.g. `app` or `database`) | `string` | n/a | yes |
 | namespace | Namespace (e.g. `disinfo`) | `string` | n/a | yes |
-| region | n/a | `string` | n/a | yes |
+| region | region to create the test environment in | `string` | n/a | yes |
 | stage | Environment (e.g. `hard`, `soft`, `unified`, `dev`) | `string` | n/a | yes |
 | tags | Additional tags (e.g. map(`Visibility`,`Public`) | `map` | `{}` | no |
-| vpc\_cidr\_block | n/a | `string` | `"172.17.0.0/16"` | no |
+| vpc\_cidr\_block | internal ip block the VPC should use | `string` | `"172.17.0.0/16"` | no |
 | vpc\_subnet\_az | the availability zone to place the CI subnet in | `string` | n/a | yes |
-| vpc\_subnet\_cidr\_block | n/a | `string` | n/a | yes |
+| vpc\_subnet\_cidr\_block | internal ip block the VPC subnet should use. Must be contained in `vpc_cidr_block` | `string` | `"172.17.1.0/24"` | no |
 
 ## Outputs
 
@@ -148,7 +148,7 @@ module "gitlab_ci_settings" {
 
 ## Share the Love 
 
-Like this project? Please give it a ★ on [GitLab](https://gitlab.com/guardianproject-ops/terraform-gitlab-ci-settings)
+Like this project? Please give it a ★ on [GitLab](https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings)
 
 Are you using this project or any of our other projects? Let us know at [@guardianproject][twitter] or [email us directly][email]
 
@@ -164,13 +164,13 @@ Check out these related projects.
 
 ## Help
 
-File an [issue](https://gitlab.com/guardianproject-ops/terraform-gitlab-ci-settings/issues), send us an [email][email] or join us in the Matrix 'verse at [#guardianproject:matrix.org][matrix] or IRC at `#guardianproject` on Freenode.
+File an [issue](https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings/issues), send us an [email][email] or join us in the Matrix 'verse at [#guardianproject:matrix.org][matrix] or IRC at `#guardianproject` on Freenode.
 
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://gitlab.com/guardianproject-ops/terraform-gitlab-ci-settings/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings/issues) to report any bugs or file feature requests.
 
 ### Developing
 

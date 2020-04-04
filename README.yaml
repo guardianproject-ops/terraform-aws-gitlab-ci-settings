@@ -5,13 +5,13 @@
 #
 
 # Name of this project
-name: terraform-gitlab-ci-settings
+name: terraform-aws-gitlab-ci-settings
 
 # License of this project
 license: "AGPL3"
 
 # Canonical GitLab repo
-gitlab_repo: guardianproject-ops/terraform-gitlab-ci-settings
+gitlab_repo: guardianproject-ops/terraform-aws-gitlab-ci-settings
 
 # Badges to display
 badges: []
@@ -36,7 +36,7 @@ usage: |-
 
   ```hcl
   module "gitlab_ci_settings" {
-    source          = "git::https://gitlab.com/guardianproject-ops/terraform-gitlab-ci-settings?ref=tags/0.1.0"
+    source          = "git::https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings?ref=tags/0.1.0"
 
     namespace       = var.namespace
     name            = "gitlab-ci"
