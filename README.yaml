@@ -1,0 +1,68 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: terraform-gitlab-ci-settings
+
+# License of this project
+license: "AGPL3"
+
+# Canonical GitLab repo
+gitlab_repo: guardianproject-ops/terraform-gitlab-ci-settings
+
+# Badges to display
+badges: []
+
+# Short description of this project
+description: |-
+  This is a terraform module that creates a testing environment in AWS for use with gitlab CI. It does not provision any gitlab runners.
+
+introduction: |-
+  This module:
+
+  * Creates VPC in a region with a single subnet
+  * Provisions an IAM user that is able to create EC2 instances in the subnet
+    * The user must create instances with certian tags, and can only affect instances with said tags
+  * Optionally adds the IAM user's AWS access key to a list of gitlab projects
+  * Installs a lambda function that terminates all test instances after a pre-determined time to save on billing costs
+
+  The intention is that the Gitlab CI pipelines of these projects can create EC2 instances during their execution.
+
+# How to use this project
+usage: |-
+
+  ```hcl
+  module "gitlab_ci_settings" {
+    source          = "git::https://gitlab.com/guardianproject-ops/terraform-gitlab-ci-settings?ref=tags/0.1.0"
+
+    namespace       = var.namespace
+    name            = "gitlab-ci"
+    stage           = var.stage
+    delimiter       = var.delimiter
+    tags            = var.tags
+    vpc_subnet_az = "eu-central-1a"
+    region        = local.aws_region
+    gitlab_project_ids = [
+      "17686952",
+    ]
+    gitlab_docker_image_project_ids = []
+  }
+  ```
+
+related:
+  - name: terraform-aws-lambda-instance-cleanup
+    description: Terraform module that installs lambda function to cleanup EC2 instances
+    url: https://gitlab.com/guardianproject-ops/terraform-aws-lambda-instance-cleanup
+
+include:
+  - "docs/terraform.md"
+
+funded_by_cdr: true
+# Contributors to this project
+contributors:
+  - name: "Abel Luck"
+    gitlab: "abelxluck"
+    gravatar: 0f605397e0ead93a68e1be26dc26481a
