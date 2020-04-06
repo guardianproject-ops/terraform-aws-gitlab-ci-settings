@@ -27,5 +27,4 @@ n/a
 n/a
 
 [Unreleased]: https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings/compare/0.1.0...HEAD
-[0.4.0]: https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings/tag/0.1.0
-
+[0.1.0]: https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings/tag/0.1.0

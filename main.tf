@@ -27,9 +27,10 @@ module "public_subnet_label" {
   name      = var.name
   stage     = var.stage
   delimiter = var.delimiter
-  tags      = merge(var.tags, map("Visibility", "Public"))
+  tags      = var.tags
   additional_tag_map = {
-    CI = "true"
+    CI         = "true"
+    Visibility = "Public"
   }
 }
 
