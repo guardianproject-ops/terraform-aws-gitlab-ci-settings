@@ -219,7 +219,9 @@ data "aws_iam_policy_document" "gitlab_ci" {
     actions = [
       "ec2:DeleteSecurityGroup",
       "ec2:AuthorizeSecurityGroupIngress",
-      "ec2:AuthorizeSecurityGroupEgress"
+      "ec2:AuthorizeSecurityGroupEgress",
+      "ec2:RevokeSecurityGroupIngress",
+      "ec2:RevokeSecurityGroupEgress"
     ]
     resources = [
       "arn:aws:ec2:${var.region}:${data.aws_caller_identity.current.account_id}:security-group/*"

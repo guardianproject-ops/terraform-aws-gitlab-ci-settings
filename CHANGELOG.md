@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 ### Removed
 
+## [0.1.1] - 2020-05-12
+
+### Added
+
+- IAM User has permission go revoke ingress+egress rules in security groups it created
+
+### Changed
+
+n/a
+
+### Removed
+
+n/a
+
 ## [0.1.0] - 2020-04-04
 
 ### Added
