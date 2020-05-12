@@ -34,8 +34,8 @@ module "public_subnet_label" {
   }
 }
 
-module "instance_cleanp" {
-  source          = "git::https://gitlab.com/guardianproject-ops/terraform-aws-lambda-instance-cleanup.git?ref=tags/0.1.0"
+module "instance_cleanup" {
+  source          = "git::https://gitlab.com/guardianproject-ops/terraform-aws-lambda-instance-cleanup.git?ref=tags/1.0.0"
   namespace       = var.namespace
   name            = var.name
   stage           = var.stage
