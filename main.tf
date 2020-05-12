@@ -250,40 +250,47 @@ resource "aws_iam_access_key" "gitlab_ci" {
 }
 
 resource "gitlab_project_variable" "aws_region" {
-  count   = length(var.gitlab_project_ids)
-  project = var.gitlab_project_ids[count.index]
-  key     = "AWS_REGION"
-  value   = var.region
+  count             = length(var.gitlab_project_ids)
+  project           = var.gitlab_project_ids[count.index]
+  key               = "AWS_REGION"
+  value             = var.region
+  environment_scope = "*"
 }
 
 resource "gitlab_project_variable" "aws_access_key" {
-  count   = length(var.gitlab_project_ids)
-  project = var.gitlab_project_ids[count.index]
-  key     = "AWS_ACCESS_KEY"
-  masked  = true
-  value   = aws_iam_access_key.gitlab_ci.id
+  count             = length(var.gitlab_project_ids)
+  project           = var.gitlab_project_ids[count.index]
+  key               = "AWS_ACCESS_KEY"
+  masked            = true
+  value             = aws_iam_access_key.gitlab_ci.id
+  environment_scope = "*"
 }
 
 resource "gitlab_project_variable" "aws_secret_access_key" {
-  count   = length(var.gitlab_project_ids)
-  project = var.gitlab_project_ids[count.index]
-  key     = "AWS_SECRET_ACCESS_KEY"
-  masked  = true
-  value   = aws_iam_access_key.gitlab_ci.secret
+  count             = length(var.gitlab_project_ids)
+  project           = var.gitlab_project_ids[count.index]
+  key               = "AWS_SECRET_ACCESS_KEY"
+  masked            = true
+  value             = aws_iam_access_key.gitlab_ci.secret
+  environment_scope = "*"
 }
 
 resource "gitlab_project_variable" "aws_subnet_id" {
-  count   = length(var.gitlab_project_ids)
-  project = var.gitlab_project_ids[count.index]
-  key     = "AWS_SUBNET_ID"
-  value   = aws_subnet.ci_subnet.id
+  count             = length(var.gitlab_project_ids)
+  project           = var.gitlab_project_ids[count.index]
+  key               = "AWS_SUBNET_ID"
+  masked            = true
+  value             = aws_subnet.ci_subnet.id
+  environment_scope = "*"
 }
 
 resource "gitlab_project_variable" "aws_vpc_id" {
-  count   = length(var.gitlab_project_ids)
-  project = var.gitlab_project_ids[count.index]
-  key     = "AWS_VPC_ID"
-  value   = aws_vpc.ci_vpc.id
+  count             = length(var.gitlab_project_ids)
+  project           = var.gitlab_project_ids[count.index]
+  key               = "AWS_VPC_ID"
+  masked            = true
+  value             = aws_vpc.ci_vpc.id
+  environment_scope = "*"
 }
 
 resource "gitlab_pipeline_schedule" "example" {
