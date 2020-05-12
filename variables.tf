@@ -10,7 +10,7 @@ variable "vpc_cidr_block" {
 
 variable "vpc_subnet_cidr_block" {
   type        = string
-  default    = "172.17.1.0/24"
+  default     = "172.17.1.0/24"
   description = "internal ip block the VPC subnet should use. Must be contained in `vpc_cidr_block`"
 }
 variable "vpc_subnet_az" {
@@ -34,4 +34,10 @@ variable "gitlab_docker_image_project_ids" {
   type        = list
   description = "a subset of gitlab_project_ids that are projects that produce docker images and should have a uniform pipeline configuration applied."
   default     = []
+}
+
+variable "instance_cleanup_max_age_minutes" {
+  type        = number
+  description = "The age in minutes after which test/CI instances will be terminated"
+  default     = 70
 }

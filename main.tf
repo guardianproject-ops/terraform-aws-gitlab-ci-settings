@@ -44,7 +44,7 @@ module "instance_cleanup" {
   tags            = var.tags
   regions         = [var.region]
   schedule        = "rate(10 minutes)"
-  max_age_minutes = 5
+  max_age_minutes = var.instance_cleanup_max_age_minutes
   limit_tags = {
     "Namespace" = [var.namespace],
     "Stage"     = [var.stage],
