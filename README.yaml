@@ -36,7 +36,7 @@ usage: |-
 
   ```hcl
   module "gitlab_ci_settings" {
-    source          = "git::https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings?ref=tags/0.1.0"
+    source          = "git::https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings?ref=master"
 
     namespace       = var.namespace
     name            = "gitlab-ci"

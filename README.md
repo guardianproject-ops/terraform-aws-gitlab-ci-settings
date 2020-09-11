@@ -61,6 +61,7 @@ It's free and open source made available under the the [GNU Affero General Publi
 
 
 
+
 ## Introduction
 
 This module:
@@ -79,13 +80,13 @@ The intention is that the Gitlab CI pipelines of these projects can create EC2 i
 
 
 **IMPORTANT:** The `master` branch is used in `source` just as an example. In your code, do not pin to `master` because there may be breaking changes between releases.
-Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings/releases).
+Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings/-/tags).
 
 
 
 ```hcl
 module "gitlab_ci_settings" {
-  source          = "git::https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings?ref=tags/0.1.0"
+  source          = "git::https://gitlab.com/guardianproject-ops/terraform-aws-gitlab-ci-settings?ref=master"
 
   namespace       = var.namespace
   name            = "gitlab-ci"
@@ -122,6 +123,7 @@ module "gitlab_ci_settings" {
 | gitlab\_docker\_image\_project\_ids | a subset of gitlab\_project\_ids that are projects that produce docker images and should have a uniform pipeline configuration applied. | `list` | `[]` | no |
 | gitlab\_project\_ids | list of gitlab project ids to configure | `list` | `[]` | no |
 | gitlab\_schedule\_daily\_rebuild\_cron | cron expression for the daily rebuild pipeline schedule | `string` | `"42 7 * * *"` | no |
+| instance\_cleanup\_max\_age\_minutes | The age in minutes after which test/CI instances will be terminated | `number` | `70` | no |
 | name | Name  (e.g. `app` or `database`) | `string` | n/a | yes |
 | namespace | Namespace (e.g. `disinfo`) | `string` | n/a | yes |
 | region | region to create the test environment in | `string` | n/a | yes |
@@ -243,6 +245,7 @@ projects][gitlab] and [non-ops projects][nonops], follow us on
 
 
 
+
 **This project is also funded by the [Center for Digital Resilience][cdr].**
 
 [<img src="https://gitlab.com/digiresilience/web/digiresilience.org/-/raw/master/assets/images/cdr-logo-gray-256w.png"/>][website]
@@ -251,6 +254,7 @@ CDR builds [resilient systems][cdr-tech] to keep civil society safe online and e
 activists to regain civic space. We offer a variety of digital wellness
 services through local partner organizations. Interested? [Email
 us][cdr-email].
+
 
 
 

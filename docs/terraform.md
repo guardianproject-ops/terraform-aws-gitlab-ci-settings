@@ -14,6 +14,7 @@
 | gitlab\_docker\_image\_project\_ids | a subset of gitlab\_project\_ids that are projects that produce docker images and should have a uniform pipeline configuration applied. | `list` | `[]` | no |
 | gitlab\_project\_ids | list of gitlab project ids to configure | `list` | `[]` | no |
 | gitlab\_schedule\_daily\_rebuild\_cron | cron expression for the daily rebuild pipeline schedule | `string` | `"42 7 * * *"` | no |
+| instance\_cleanup\_max\_age\_minutes | The age in minutes after which test/CI instances will be terminated | `number` | `70` | no |
 | name | Name  (e.g. `app` or `database`) | `string` | n/a | yes |
 | namespace | Namespace (e.g. `disinfo`) | `string` | n/a | yes |
 | region | region to create the test environment in | `string` | n/a | yes |
